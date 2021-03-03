@@ -1,0 +1,25 @@
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
+@layer base{
+    html{
+        background-color: #0c1621;
+    }
+    body{
+        overflow-x: hidden;
+    }
+    
+    .grecaptcha-badge {
+        visibility: hidden;
+        display: none;
+    }
+}
+
+@layer components {
+    .blur{
+        filter: blur(0.5rem);
+    }
+}
