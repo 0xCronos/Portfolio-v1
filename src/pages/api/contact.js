@@ -32,9 +32,18 @@ export default async (req, res) => {
 	// borra token, ya no lo necesitamos
 	delete contactData.token;
 
+	// get ip for analitics
+	let ip = req.headers["x-forwarded-for"];
+	if(typeof ip != 'undefined') {
+		const ipList = ip.split(",");
+		ip = ipList[ipList.length-1];
+	}else{
+		ip = req.connection.remoteAddress;
+	}
+
 	firebase.db.collection('contacts').add({
 		...contactData,
-		ip: req.connection.remoteAddress,
+		ip
 	});
 
 	res.status(200).json({
@@ -63,8 +72,8 @@ const checkContactData = (data) => {
     if(!data.hasOwnProperty('message')) return false;
     if(!data.hasOwnProperty('token')) return false;
     // comprueba largos y valida correo
-	if (data.name.length == 0) return false;
-	if (data.email.length == 0 || !validator.validate(data.email)) return false;
-	if (data.message.length == 0) return false;
+	if (data.name.length == 0 || data.name.length > 25) return false;
+	if (data.email.length == 0 || !validator.validate(data.email) || data.email.length > 320 ) return false;
+	if (data.message.length == 0 || data.message.length > 450) return false;
 	return true;
 };

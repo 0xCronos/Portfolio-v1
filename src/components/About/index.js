@@ -15,7 +15,7 @@ export const About = () => {
 					<br />
 					<br />
 					I considered myself a responsible, eager for knowledge and self-taught person, I always try to understand
-					things from his background and I never close myself to new knowledge.
+					things from its background and I never close myself to new knowledge.
 					<br />
 					I really love animals, nature and videogames.
 					<br /> <br />

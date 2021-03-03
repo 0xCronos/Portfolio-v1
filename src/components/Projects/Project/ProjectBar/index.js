@@ -28,7 +28,7 @@ export const ProjectBar = ({visible, project, setSelected, setCurrentProject}) =
             <a href={github} target='_blank' rel='noopener'>
                 <GitHub className='m-4' fontSize='large' />
             </a>
-            <a href={website} target='_blank' rel='noopener'>
+            <a href={website} target='_blank' rel='noopener'className={!website ? 'opacity-50 cursor-default' : ''}>
                 <Language className='m-4' fontSize='large' />
             </a>
             <AspectRatio className='m-4' fontSize='large' 
